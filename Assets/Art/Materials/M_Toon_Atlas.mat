@@ -1,0 +1,94 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: M_Toon_Atlas
+  m_Shader: {fileID: 4800000, guid: 60b55aa910b64ef9ba47c6d3749846e4, type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 1
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses:
+  - SRPDEFAULTUNLIT
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _BaseMap:
+        m_Texture: {fileID: 2800000, guid: 456564bdf6afc6b45a13804f73935bc6, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _BrushTex:
+        m_Texture: {fileID: 2800000, guid: 3c2e2d0aa8f34aa9a1b1e019de7a745f, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _AOStrength: 0.75
+    - _Ambient: 0.03
+    - _AmbientStrength: 0.45
+    - _BrushAlbedo: 0.12
+    - _BrushObjectSpace: 0
+    - _BrushScale: 0.08
+    - _BrushShading: 0.35
+    - _Cull: 0
+    - _EmitMult: 2.2
+    - _GrainStrength: 0.05
+    - _HatchStrength: 0.15
+    - _HighlightBoost: 0
+    - _HighlightEdge: 0.413
+    - _LightStep: 0.6
+    - _MidStep: 0.16
+    - _OutlineAlbedo: 0.35
+    - _OutlineWidth: 0
+    - _RimMax: 0.82
+    - _RimMin: 0.62
+    - _RimStrength: 0.22
+    - _RimWidth: 0.106
+    - _ShadowEdge: 0.05
+    - _ShadowSaturation: 1.2
+    - _ShadowSoftness: 0.05
+    - _ShadowWobble: 0.3
+    - _SpecAmount: 0
+    - _SpecSize: 0.965
+    - _SpecStrength: 0.5
+    - _SpecThreshold: 0.975
+    - _TerminatorStrength: 0.35
+    - _TriColors: 0
+    - _TriSeed: 0
+    - _VariationScale: 0.03
+    - _VariationStrength: 0.45
+    - _VertexMasks: 1
+    m_Colors:
+    - _ArcSpecColor: {r: 1, g: 0.95, b: 0.85, a: 1}
+    - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
+    - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _GlowHotColor: {r: 1, g: 0.85, b: 0.62, a: 1}
+    - _HatchColor: {r: 0.55, g: 0.5, b: 0.72, a: 1}
+    - _LightTint: {r: 1, g: 0.97, b: 0.93, a: 1}
+    - _MidTint: {r: 0.722, g: 0.7014, b: 0.7857, a: 1}
+    - _OutlineColor: {r: 0.07, g: 0.04, b: 0.08, a: 1}
+    - _RimColor: {r: 1, g: 0.8, b: 0.58, a: 1}
+    - _RimShadowColor: {r: 0.2, g: 0.55, b: 0.8, a: 1}
+    - _ShadowColor: {r: 0.44, g: 0.41, b: 0.6, a: 1}
+    - _ShadowTint: {r: 0.42359996, g: 0.40999997, b: 0.5564, a: 1}
+    - _TerminatorColor: {r: 1, g: 0.36, b: 0.2, a: 1}
+    - _ToonSpecColor: {r: 1, g: 0.9686, b: 0.8962, a: 1}
+    - _TriColor0: {r: 0.35999998, g: 0.54999995, b: 0.24999997, a: 1}
+    - _TriColor1: {r: 0.41999996, g: 0.62, b: 0.27999997, a: 1}
+    - _TriColor2: {r: 0.29999998, g: 0.47999996, b: 0.21999997, a: 1}
+    - _TriColor3: {r: 0.47999996, g: 0.6399999, b: 0.29999998, a: 1}
+    - _VariationCool: {r: 0.86, g: 0.95, b: 1.08, a: 1}
+    - _VariationWarm: {r: 1.08, g: 0.97, b: 0.84, a: 1}
+  m_BuildTextureStacks: []
+  m_AllowLocking: 1

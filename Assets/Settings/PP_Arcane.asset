@@ -65,10 +65,10 @@ MonoBehaviour:
   active: 1
   temperature:
     m_OverrideState: 1
-    m_Value: -4
+    m_Value: -3
   tint:
     m_OverrideState: 1
-    m_Value: 4
+    m_Value: 3
 --- !u!114 &-4306736231301313608
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -170,13 +170,13 @@ MonoBehaviour:
   active: 1
   shadows:
     m_OverrideState: 1
-    m_Value: {r: 0.36, g: 0.48, b: 0.54, a: 1}
+    m_Value: {r: 0.3041865, g: 0.45280963, b: 0.5320754, a: 1}
   highlights:
     m_OverrideState: 1
-    m_Value: {r: 0.62, g: 0.5, b: 0.38, a: 1}
+    m_Value: {r: 0.6226415, g: 0.506109, b: 0.43584904, a: 1}
   balance:
     m_OverrideState: 1
-    m_Value: -5
+    m_Value: -4
 --- !u!114 &-110350263666893330
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -195,10 +195,10 @@ MonoBehaviour:
     m_Value: {x: 0.95145637, y: 0.9611651, z: 1, w: 0}
   gamma:
     m_OverrideState: 1
-    m_Value: {x: 1, y: 1, z: 1, w: 0}
+    m_Value: {x: 1, y: 1, z: 1, w: -0.014585008}
   gain:
     m_OverrideState: 1
-    m_Value: {x: 1, y: 0.97087383, z: 0.93203884, w: 0}
+    m_Value: {x: 1, y: 0.97087383, z: 0.93203884, w: 0.014585008}
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -263,13 +263,13 @@ MonoBehaviour:
   active: 1
   shadows:
     m_OverrideState: 1
-    m_Value: {x: 0.8878504, y: 0.91588783, z: 1, w: -0.02}
+    m_Value: {x: 0.8878504, y: 0.91588783, z: 1, w: 0.009170575}
   midtones:
     m_OverrideState: 1
-    m_Value: {x: 0.990099, y: 0.97029704, z: 1, w: 0}
+    m_Value: {x: 0.990099, y: 0.97029704, z: 1, w: 0.009115769}
   highlights:
     m_OverrideState: 1
-    m_Value: {x: 1, y: 0.9433963, z: 0.8490566, w: 0}
+    m_Value: {x: 1, y: 0.9433963, z: 0.8490566, w: 0.11668173}
   shadowsStart:
     m_OverrideState: 0
     m_Value: 0
@@ -319,10 +319,10 @@ MonoBehaviour:
     m_Value: {x: 0.5, y: 0.5}
   intensity:
     m_OverrideState: 1
-    m_Value: 0.34
+    m_Value: 0.33
   smoothness:
     m_OverrideState: 1
-    m_Value: 0.42
+    m_Value: 0.484
   rounded:
     m_OverrideState: 1
     m_Value: 0
@@ -353,4 +353,4 @@ MonoBehaviour:
     m_Value: 0
   saturation:
     m_OverrideState: 1
-    m_Value: -4
+    m_Value: -5

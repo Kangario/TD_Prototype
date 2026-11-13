@@ -77,10 +77,10 @@ Material:
     - _RimShadowColor: {r: 0.2, g: 0.55, b: 0.8, a: 1}
     - _ShadowColor: {r: 0.44, g: 0.41, b: 0.6, a: 1}
     - _TerminatorColor: {r: 1, g: 0.36, b: 0.2, a: 1}
-    - _TriColor0: {r: 0.419114, g: 0.5849056, b: 0.32114625, a: 1}
-    - _TriColor1: {r: 0.4505159, g: 0.6075471, b: 0.3335777, a: 1}
-    - _TriColor2: {r: 0.4128884, g: 0.6075471, b: 0.3244072, a: 1}
-    - _TriColor3: {r: 0.45367846, g: 0.6301887, b: 0.25564256, a: 1}
+    - _TriColor0: {r: 0.43293065, g: 0.6, b: 0.32941172, a: 1}
+    - _TriColor1: {r: 0.4470588, g: 0.5921569, b: 0.33725482, a: 1}
+    - _TriColor2: {r: 0.43137255, g: 0.5882353, b: 0.32549012, a: 1}
+    - _TriColor3: {r: 0.4252715, g: 0.6, b: 0.3198219, a: 1}
     - _VariationCool: {r: 0.86, g: 0.95, b: 1.08, a: 1}
     - _VariationWarm: {r: 1.08, g: 0.97, b: 0.84, a: 1}
   m_BuildTextureStacks: []

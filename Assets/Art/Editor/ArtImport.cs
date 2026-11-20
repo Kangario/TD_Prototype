@@ -46,6 +46,17 @@ public class ArtImport : AssetPostprocessor
         mi.animationType = animated ? ModelImporterAnimationType.Generic : ModelImporterAnimationType.None;
     }
 
+    // Клип портала: Blender запекает ключи и на корень SM_Portal (позиция 0, поворот 0, масштаб 1). Animator
+    // пишет их в корень префаба, и на старте портал прыгает в центр мира. Анимирован только низ иерархии
+    // (воронка и камни) - кривые корневого Transform вырезаются.
+    void OnPostprocessAnimation(GameObject root, AnimationClip clip)
+    {
+        if (!assetPath.StartsWith(Root) || Path.GetFileNameWithoutExtension(assetPath) != "SM_Portal") return;
+        foreach (var b in AnimationUtility.GetCurveBindings(clip))
+            if (string.IsNullOrEmpty(b.path) && b.type == typeof(Transform))
+                AnimationUtility.SetEditorCurve(clip, b, null);
+    }
+
     // Модели, которые красятся цветом по треугольникам (P1/Arcane, галка «4 colors by triangle»).
     public static readonly string[] TriangleColorModels = { "SM_Ground_Tile" };
 

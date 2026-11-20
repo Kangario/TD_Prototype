@@ -34,6 +34,8 @@ public static class ArcaneLook
     const string ShowcaseScene = "Assets/Scenes/ArtShowcase.unity";
     static readonly string[] Scenes = { ShowcaseScene, "Assets/Scenes/CharacterLineup.unity", "Assets/_Project/Scenes/Game.unity" };
     static readonly string[] UnitModelDirs = { "Assets/Art/Characters", "Assets/Art/Weapons" };
+    // монстры (враги): пак LowPoly Fantasy Monsters, материалы переводятся на месте - префабы пака уже ссылаются на них
+    const string MonsterDir = "Assets/LowPoly Fantasy Monsters Pack Ver1.0_Demo";
 
     // ------------------------------------------------------------------ палитра
     static readonly Color SunColor = new Color(1f, 0.85f, 0.66f);
@@ -68,7 +70,32 @@ public static class ArcaneLook
         AssetDatabase.SaveAssets();
     }
 
-    [MenuItem("Tools/P1 Art/Arcane Look/Setup Open Scenes", priority = 3)]
+    [MenuItem("Tools/P1 Art/Arcane Look/Monsters Only", priority = 3)]
+    public static void MonstersMenu()
+    {
+        SetupMonsters();
+        AssetDatabase.SaveAssets();
+    }
+
+    /// Материалы монстров (Standard из пака) -> P1/Arcane в настройке ConfigureMonster. Повторный запуск безопасен.
+    public static int SetupMonsters()
+    {
+        if (!AssetDatabase.IsValidFolder(MonsterDir)) return 0;
+        var shader = FindShader(ShaderName);
+        int n = 0;
+        foreach (var guid in AssetDatabase.FindAssets("t:Material", new[] { MonsterDir }))
+        {
+            var m = AssetDatabase.LoadAssetAtPath<Material>(AssetDatabase.GUIDToAssetPath(guid));
+            if (m == null || (m.shader != shader && !IsConvertible(m.shader))) continue;   // частицы демо-сцен не трогаем
+            ConvertKeepingLook(m, shader);
+            ConfigureMonster(m);
+            n++;
+        }
+        Debug.Log("[ArcaneLook] монстры: материалов " + n);
+        return n;
+    }
+
+    [MenuItem("Tools/P1 Art/Arcane Look/Setup Open Scenes", priority = 4)]
     public static void OpenScenesMenu()
     {
         var profile = SetupVolumeProfile();
@@ -170,7 +197,7 @@ public static class ArcaneLook
         foreach (var guid in AssetDatabase.FindAssets("t:Material", new[] { "Assets" }))
         {
             string path = AssetDatabase.GUIDToAssetPath(guid);
-            if (path.StartsWith("Assets/Art/VFX/")) continue;
+            if (path.StartsWith("Assets/Art/VFX/") || path.StartsWith(MonsterDir + "/")) continue;   // монстры - SetupMonsters
             var m = AssetDatabase.LoadAssetAtPath<Material>(path);
             if (m == null || m == atlas || m == aa || m == outline || !IsConvertible(m.shader)) continue;
             ConvertKeepingLook(m, shader);
@@ -178,6 +205,9 @@ public static class ArcaneLook
             else ConfigureProp(m);
             other++;
         }
+
+        // монстры: свой, более тёмный вариант персонажа
+        SetupMonsters();
 
         // встроенные материалы моделей вне Assets/Art (X Bot, пропсы пака)
         RemapEmbeddedMaterials(shader);
@@ -189,7 +219,7 @@ public static class ArcaneLook
     {
         if (s == null) return false;
         string n = s.name;
-        return n == "P1/Toon" || n == "Standard" || n == "Universal Render Pipeline/Lit" ||
+        return n == "P1/Toon" || n == "Standard" || n == "Standard (Specular setup)" || n == "Universal Render Pipeline/Lit" ||
                n == "Universal Render Pipeline/Simple Lit" || n == "Universal Render Pipeline/Complex Lit" ||
                n == "Universal Render Pipeline/Baked Lit";
     }
@@ -328,6 +358,35 @@ public static class ArcaneLook
         m.SetFloat("_RimStrength", 0.55f);
         m.SetFloat("_EmitMult", 2f);
         SetOutline(m, 1.3f);
+        EditorUtility.SetDirty(m);
+    }
+
+    /// Монстры: тот же рисованный тун, что у героев, но чуть темнее и злее. Текстура пака без подкраски
+    /// (серый _Color пака был под блики Standard, в туне он только гасит цвет); свет немного приглушён, тень на тон
+    /// глубже и фиолетовее, граница тени чуть сдвинута, тёплого ободка меньше, холодный кикер в тени сильнее
+    /// (силуэт читается и в тени), штриховка гуще, контур толще.
+    public static void ConfigureMonster(Material m)
+    {
+        ConfigureCharacter(m);
+        m.SetColor("_BaseColor", Color.white);
+        m.SetColor("_LightTint", new Color(0.93f, 0.88f, 0.86f));
+        m.SetColor("_ShadowColor", new Color(0.33f, 0.29f, 0.48f));
+        m.SetFloat("_AmbientStrength", 0.38f);
+        m.SetFloat("_ShadowSaturation", 1.3f);
+        m.SetFloat("_ShadowEdge", 0.09f);
+        m.SetFloat("_HighlightBoost", 0.08f);
+        m.SetColor("_TerminatorColor", new Color(0.9f, 0.25f, 0.2f));
+        m.SetFloat("_TerminatorStrength", 0.4f);
+        m.SetFloat("_HatchStrength", 0.26f);
+        m.SetColor("_HatchColor", new Color(0.5f, 0.45f, 0.68f));
+        m.SetFloat("_SpecAmount", 0.25f);
+        m.SetFloat("_SpecStrength", 0.35f);
+        m.SetColor("_RimColor", new Color(1f, 0.66f, 0.48f));
+        m.SetColor("_RimShadowColor", new Color(0.3f, 0.55f, 0.9f));
+        m.SetFloat("_RimMin", 0.55f);
+        m.SetFloat("_RimStrength", 0.6f);
+        m.SetFloat("_OutlineAlbedo", 0.25f);
+        SetOutline(m, 1.5f);
         EditorUtility.SetDirty(m);
     }
 
